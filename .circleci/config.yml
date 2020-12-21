@@ -28,6 +28,12 @@ jobs:
             docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_ACCESS_TOKEN}"
 
       - run:
+          name: Create isolated BuildX instance
+          command: |
+            docker buildx create --use && \
+              docker buildx ls
+
+      - run:
           name: Build Docker image
           command: |
             docker buildx build \
