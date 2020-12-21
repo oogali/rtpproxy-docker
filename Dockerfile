@@ -1,5 +1,8 @@
 FROM debian:buster-slim AS build
 
+RUN ln -s /usr/bin/dpkg-deb /usr/sbin/dpkg-deb && \
+    ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split
+
 RUN apt-get update && \
     apt-get -y install --no-install-recommends ca-certificates file git build-essential  && \
     apt-get clean && \
