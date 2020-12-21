@@ -16,6 +16,13 @@ jobs:
           version: 19.03.13
 
       - run:
+          name: Build and install BuildX
+          command: |
+            docker build --platform=local -o . git://github.com/docker/buildx && \
+            mkdir -p ~/.docker/cli-plugins && \
+            mv buildx ~/.docker/cli-plugins/docker-buildx
+
+      - run:
           name: Login to Docker Hub
           command: |
             docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_ACCESS_TOKEN}"
