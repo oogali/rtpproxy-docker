@@ -30,7 +30,8 @@ jobs:
       - run:
           name: Create isolated BuildX instance
           command: |
-            docker buildx create --use && \
+            docker context create build-context
+              docker buildx create --name builder --use build-context && \
               docker buildx ls
 
       - run:
