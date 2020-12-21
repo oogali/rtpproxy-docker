@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Build and install BuildX
           command: |
-            docker build --platform=local -o . git://github.com/docker/buildx && \
+            docker build --progress=plain --platform=local -o . git://github.com/docker/buildx && \
             mkdir -p ~/.docker/cli-plugins && \
             mv buildx ~/.docker/cli-plugins/docker-buildx
 
