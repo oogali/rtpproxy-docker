@@ -18,14 +18,14 @@ jobs:
       - run:
           name: Login to Docker Hub
           command: |
-            docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
+            docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_ACCESS_TOKEN}"
 
       - run:
           name: Build Docker image
           command: |
             docker buildx build \
               --platform ${BUILDX_PLATFORM} \
-              --tag oogali:rtpproxy .
+              --tag oogali/rtpproxy .
 
       - run:
           name: Tag Docker image
